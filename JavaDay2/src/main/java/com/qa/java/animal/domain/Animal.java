@@ -22,9 +22,18 @@ public class Animal {
 	
 	public Animal(String name, int age, String species) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.species = species;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -53,6 +62,6 @@ public class Animal {
 
 	@Override
 	public String toString() {
-		return "Animal - name:" + name + ", age:" + age + ", species:" + species;
+		return "Animal - id:" + id + "name:" + name + ", age:" + age + ", species:" + species;
 	}
 }

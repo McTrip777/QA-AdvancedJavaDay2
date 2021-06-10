@@ -27,11 +27,6 @@ public class AnimalService {
 	public Animal getAnimal(Long id) {
 		Optional<Animal> a = this.repo.findById(id);
 		return a.get();
-//		if(a != null) {
-//			return a;			
-//		}else {
-//			return null;
-//		}
 	}
 	
 	//CREATE
@@ -39,10 +34,19 @@ public class AnimalService {
 		return this.repo.save(a);
 	}
 	
-	//PUT
-//	public Animal updateAnimal(Long id, Animal newAnimal) {
-//		
-//	}
+	//Update
+	public Animal updateAnimal(Long id, Animal newAnimal) {
+		if(this.getAnimal(id) != null) {
+			Animal temp = this.getAnimal(id);
+			temp.setId(id);
+			temp.setAge(newAnimal.getAge());
+			temp.setName(newAnimal.getName());
+			temp.setSpecies(newAnimal.getSpecies());
+			Animal updated = this.repo.save(temp); // save it back to overwrite original
+			return updated;
+		}
+		else return null;
+	}
 	
 	//PATCH
 	
@@ -51,6 +55,4 @@ public class AnimalService {
 		this.repo.deleteById(id);
 		return this.repo.existsById(id);
 	}
-	
-	
 }

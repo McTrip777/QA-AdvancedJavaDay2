@@ -28,7 +28,7 @@ public class AnimalController {
 	
 	@GetMapping("/get/animal/{index}")
 	public ResponseEntity<Animal> getAnimal(@PathVariable Long index){
-		return new ResponseEntity<Animal>(this.service.getAnimal(index), HttpStatus.OK);
+			return this.service.getAnimal(index) != null ? new ResponseEntity<Animal>(HttpStatus.OK) : new ResponseEntity<Animal>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
 	@PostMapping("/post/animal")
@@ -36,10 +36,11 @@ public class AnimalController {
 		return new ResponseEntity<String>(this.service.createAnimal(a) + " was added successfully", HttpStatus.CREATED);
 	}
 	
-//	@PutMapping("/put/animal/{index}")
-//	public ResponseEntity<Animal> updateAnimal(@PathVariable Long index, @RequestBody Animal a){
-//		return new ResponseEntity<Animal>(this.service.updateAnimal(index, a), HttpStatus.ACCEPTED);
-//	}
+	@PutMapping("/put/animal/{index}")
+	public ResponseEntity<Animal> updateAnimal(@PathVariable Long index, @RequestBody Animal a){
+		this.service.updateAnimal(index, a);
+		return new ResponseEntity<Animal>(a, HttpStatus.ACCEPTED);
+	}
 //	
 //	@PatchMapping("/patch/animal/{index}")
 //	public ResponseEntity<Animal> changeAnimal(@PathVariable Long index, @PathParam("name") String name, @PathParam("age") int age, @PathParam("species") String species ){
