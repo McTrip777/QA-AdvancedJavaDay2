@@ -11,7 +11,7 @@ import com.qa.java.repo.AnimalRepo;
 @Service
 public class AnimalService {
 
-	private AnimalRepo repo;
+	public AnimalRepo repo;
 	
 	public AnimalService(AnimalRepo repo) {
 		this.repo = repo;

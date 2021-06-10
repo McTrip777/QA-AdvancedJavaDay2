@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Animal {
+public abstract class Animal {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,6 @@ public class Animal {
 	
 	public Animal(String name, int age, String species) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.species = species;

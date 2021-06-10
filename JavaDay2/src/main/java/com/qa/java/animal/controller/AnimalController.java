@@ -21,36 +21,36 @@ public class AnimalController {
 		this.service = service;
 	}
 	
-	@GetMapping("/get/animals")
-	public ResponseEntity<List<Animal>> getAllAnimals(){
-		return new ResponseEntity<List<Animal>>( this.service.getAllAnimals(), HttpStatus.OK);
-	}
-	
-	@GetMapping("/get/animal/{index}")
-	public ResponseEntity<Animal> getAnimal(@PathVariable Long index){
-			return this.service.getAnimal(index) != null ? new ResponseEntity<Animal>(HttpStatus.OK) : new ResponseEntity<Animal>(HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-	
-	@PostMapping("/post/animal")
-	public ResponseEntity<String> createAnimal(@RequestBody Animal a) {
-		return new ResponseEntity<String>(this.service.createAnimal(a) + " was added successfully", HttpStatus.CREATED);
-	}
-	
-	@PutMapping("/put/animal/{index}")
-	public ResponseEntity<Animal> updateAnimal(@PathVariable Long index, @RequestBody Animal a){
-		this.service.updateAnimal(index, a);
-		return new ResponseEntity<Animal>(a, HttpStatus.ACCEPTED);
-	}
+//	@GetMapping("/get/animals")
+//	public ResponseEntity<List<Animal>> getAllAnimals(){
+//		return new ResponseEntity<List<Animal>>( this.service.getAllAnimals(), HttpStatus.OK);
+//	}
+//	
+//	@GetMapping("/get/animal/{index}")
+//	public ResponseEntity<Animal> getAnimal(@PathVariable Long index){
+//			return this.service.getAnimal(index) != null ? new ResponseEntity<Animal>(HttpStatus.OK) : new ResponseEntity<Animal>(HttpStatus.INTERNAL_SERVER_ERROR);
+//	}
+//	
+//	@PostMapping("/post/animal")
+//	public ResponseEntity<String> createAnimal(@RequestBody Animal a) {
+//		return new ResponseEntity<String>(this.service.createAnimal(a) + " was added successfully", HttpStatus.CREATED);
+//	}
+//	
+//	@PutMapping("/put/animal/{index}")
+//	public ResponseEntity<Animal> updateAnimal(@PathVariable Long index, @RequestBody Animal a){
+//		this.service.updateAnimal(index, a);
+//		return new ResponseEntity<Animal>(a, HttpStatus.ACCEPTED);
+//	}
 //	
 //	@PatchMapping("/patch/animal/{index}")
 //	public ResponseEntity<Animal> changeAnimal(@PathVariable Long index, @PathParam("name") String name, @PathParam("age") int age, @PathParam("species") String species ){
 //		return new ResponseEntity<Animal>(this.service.changeAnimal(index, name, age, species), HttpStatus.ACCEPTED);
 //	}
 
-	@DeleteMapping("/delete/animal/{index}")
-	public ResponseEntity<Animal> deleteAnimal(@PathVariable Long index){
-		return this.service.deleteAnimal(index) ? new ResponseEntity<>(HttpStatus.NO_CONTENT):new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-	}
+//	@DeleteMapping("/delete/animal/{index}")
+//	public ResponseEntity<Animal> deleteAnimal(@PathVariable Long index){
+//		return this.service.deleteAnimal(index) ? new ResponseEntity<>(HttpStatus.NO_CONTENT):new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//	}
 	
 //	@DeleteMapping("/delete/animals")
 //	public ResponseEntity<String> deleteAllAnimals(){
